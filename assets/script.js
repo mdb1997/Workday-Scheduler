@@ -16,12 +16,6 @@ $(function () {
     // Create a variable to get the current hour of the day using dayjs.
     var currentHour = dayjs().format('H');
     
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
     // Create a function that will save the user's input into the local storage when the save button is clicked.
     // Use 'this' and DOM traversal for this function.
     function input() {
@@ -31,6 +25,13 @@ $(function () {
             localStorage.setItem(time, text);
         });
     }
+    // Write code to get the input from the local storage and into the schedule so that it doesn't 
+    // disappear when the webpage in refreshed.
+        $('.time-block').each(function() {
+            var time = $(this).attr('id');
+            var text = localStorage.getItem(time);
+            $(this).children('description').val(text);
+        });
 
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
