@@ -21,7 +21,7 @@ $(function () {
     function input() {
         $('.saveBtn').on('click', function() {
             var time = $(this).parent().attr('id');
-            var text = $(this).siblings('description').val();
+            var text = $(this).siblings('.description').val();
             localStorage.setItem(time, text);
         });
     }
@@ -30,7 +30,7 @@ $(function () {
         $('.time-block').each(function() {
             var time = $(this).attr('id');
             var text = localStorage.getItem(time);
-            $(this).children('description').val(text);
+            $(this).children('.description').val(text);
         });
 
     // Create a function to change the background color of each time block in order to depict past,
@@ -48,7 +48,7 @@ $(function () {
                 $(this).removeClass('past');
                 $(this).removeClass('present');
             }
-        });
+        })
     }
 
     // Call the functions to them to appear on the webpage.
